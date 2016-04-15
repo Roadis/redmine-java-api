@@ -99,23 +99,31 @@ public class Attachment implements Identifiable {
         this.token = token;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Attachment that = (Attachment) o;
-
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-
+@Override
+public boolean equals(Object o) {
+    if (this == o) {
         return true;
     }
-
-    @Override
-    public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+    if (o == null || getClass() != o.getClass()) {
+        return false;
     }
 
+    Attachment that = (Attachment) o;
+
+    if (id != null ? !id.equals(that.id) : that.id != null) {
+        return false;
+    }
+    if (token != null ? !token.equals(that.token) : that.token != null) {
+        return false;
+    }
+
+    return true;
+}
+
+@Override
+public int hashCode() {
+    return id != null ? id.hashCode() : (token == null ? 0 : token.hashCode());
+}
     @Override
     public String toString() {
         return "Attachment{" +
